@@ -3,76 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Agent IA</title>
+    <title>Test Agent IA - Avec Boutons</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
+            max-width: 900px;
+            margin: 40px auto;
             padding: 20px;
-            background: #fafafa;
+            background: #f5f5f5;
         }
+
         .container {
             background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             padding: 30px;
         }
+
         h1 {
             color: #6d4aff;
+            margin-bottom: 30px;
+            text-align: center;
         }
-        .data-section {
+
+        h2 {
+            color: #333;
+            margin: 25px 0 15px 0;
+            border-bottom: 2px solid #6d4aff;
+            padding-bottom: 10px;
+        }
+
+        .section {
             margin: 20px 0;
-            padding: 15px;
-            background: #f0f0f0;
+            padding: 20px;
+            background: #fafafa;
             border-left: 4px solid #6d4aff;
+            border-radius: 4px;
         }
-        .price {
-            font-size: 24px;
-            color: #22c55e;
-            font-weight: bold;
+
+        /* Styles des boutons */
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            align-items: center;
         }
-        .date {
-            color: #666;
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #6d4aff;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #666;
+            color: white;
+        }
+
+        .btn-success {
+            background: #22c55e;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #6d4aff;
+            border: 2px solid #6d4aff;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Zone de sortie */
+        .output-area {
+            background: #1e1e1e;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            border-radius: 6px;
+            min-height: 150px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Indicateurs d'état */
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 5px;
+        }
+
+        .status-active {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-inactive {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        /* Input fields */
+        .input-group {
+            margin: 15px 0;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
             font-size: 14px;
         }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li::before {
-            content: "• ";
-            color: #6d4aff;
+
+        input:focus {
+            outline: none;
+            border-color: #6d4aff;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📊 Dashboard Produit</h1>
-        
-        <div class="data-section">
-            <h3>Crypto - Bitcoin (BTC)</h3>
-            <p class="price">$67,432.50</p>
-            <p class="date">Mise à jour : 15 janvier 2026</p>
+        <h1>🤖 Dashboard de Test Agent IA</h1>
+
+        <!-- Section 1: Données statiques -->
+        <div class="section">
+            <h2>📊 Données Produit</h2>
+            <p><strong>Produit :</strong> AI Assistant Premium</p>
+            <p><strong>Prix :</strong> <span id="price">29.99€</span></p>
+            <p><strong>Stock :</strong> <span class="status-badge status-active">En stock (1,234)</span></p>
         </div>
-        
-        <div class="data-section">
-            <h3>Actions - Apple Inc.</h3>
-            <p class="price">$192.85</p>
-            <p class="date">Clôture : 14 janvier 2026</p>
-            <ul>
-                <li>Vente trimestrielle : $89.5B</li>
-                <li>Marge bénéficiaire : 28.5%</li>
-                <li>P/E Ratio : 31.2</li>
-            </ul>
+
+        <!-- Section 2: Boutons d'action -->
+        <div class="section">
+            <h2>🎮 Actions Test</h2>
+            <div class="btn-container">
+                <button class="btn btn-primary" onclick="showMessage('primary')">Action Primaire</button>
+                <button class="btn btn-success" onclick="showMessage('success')">Valider</button>
+                <button class="btn btn-danger" onclick="showMessage('danger')">Annuler</button>
+                <button class="btn btn-warning" onclick="increment()">+ Ajouter</button>
+                <button class="btn btn-outline" onclick="reset()">Reset</button>
+                <button class="btn btn-secondary" onclick="toggleTheme()">🌓 Theme</button>
+            </div>
         </div>
-        
-        <div class="data-section">
-            <h3>Stocks</h3>
-            <p><strong>Inventaire :</strong> 1,234 unités</p>
-            <p><strong>Réservé :</strong> 89 unités</p>
-            <p><strong>Disponible :</strong> 1,145 unités</p>
+
+        <!-- Section 3: Input interactif -->
+        <div class="section">
+            <h2>⌨️ Zone d'Entrée</h2>
+            <div class="input-group">
+                <input type="text" id="agentInput" placeholder="Entrez un test pour l'agent...">
+            </div>
+            <div class="btn-container">
+                <button class="btn btn-primary" onclick="processInput()">Soumettre</button>
+                <button class="btn btn-outline" onclick="clearInput()">Effacer</button>
+            </div>
+        </div>
+
+        <!-- Section 4: Compteurs -->
+        <div class="section">
+            <h2>📈 Compteurs</h2>
+            <p>Interactions : <span id="counter">0</span></p>
+            <p>Dernière action : <span id="lastAction">-</span></p>
+        </div>
+
+        <!-- Section 5: Output terminal -->
+        <div class="section">
+            <h2>💻 Terminal Agent</h2>
+            <div class="output-area" id="terminal">
+[SYSTEM] Agent prêt...
+> En attente de commande...
+            </div>
         </div>
     </div>
+
+    <script>
+        let counter = 0;
+        let lastAction = '-';
+        let isDarkMode = false;
+
+        function log(message) {
+            const terminal = document.getElementById('terminal');
+            const timestamp = new Date().toLocaleTimeString();
+            terminal.textContent += `\n[${timestamp}] ${message}`;
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function showMessage(type) {
+            counter++;
+            document.getElementById('counter').textContent = counter;
+            lastAction = `Bouton ${type}`;
+            document.getElementById('lastAction').textContent = lastAction;
+            log(`Action déclenchée: ${type.toUpperCase()}`);
+        }
+
+        function increment() {
+            counter++;
+            const priceEl = document.getElementById('price');
+            let currentPrice = parseFloat(priceEl.textContent.replace('€', ''));
+            currentPrice += 9.99;
+            priceEl.textContent = `${currentPrice.toFixed(2)}€`;
+            log(`Incrémentation: +9.99€ → ${currentPrice.toFixed(2)}€`);
+        }
+
+        function reset() {
+            counter = 0;
+            document.getElementById('counter').textContent = counter;
+            document.getElementById('price').textContent = '29.99€';
+            document.getElementById('lastAction').textContent = '-';
+            log('Réinitialisation complète');
+        }
+
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            if (isDarkMode) {
+                body.style.background = '#1a1a1a';
+                log('Mode sombre activé');
+            } else {
+                body.style.background = '#f5f5f5';
+                log('Mode clair activé');
+            }
+        }
+
+        function processInput() {
+            const input = document.getElementById('agentInput');
+            const value = input.value.trim();
+            if (value) {
+                counter++;
+                document.getElementById('counter').textContent = counter;
+                lastAction = `Input: ${value.substring(0, 20)}${value.length > 20 ? '...' : ''}`;
+                document.getElementById('lastAction').textContent = lastAction;
+                log(`Input reçu: "${value}"`);
+            }
+        }
+
+        function clearInput() {
+            document.getElementById('agentInput').value = '';
+            log('Champ effacé');
+        }
+    </script>
 </body>
 </html>
