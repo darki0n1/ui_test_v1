@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Soumission - T-1002</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 700px; margin: 30px auto; background: #f5f5f5; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { color: #6d4aff; margin-bottom: 10px; }
+        .meta { color: #666; font-size: 14px; margin-bottom: 20px; }
+        .instruction { background: #f8f9fa; padding: 15px; border-left: 4px solid #6d4aff; margin: 20px 0; border-radius: 4px; }
+        textarea { width: 100%; min-height: 200px; padding: 12px; border: 2px solid #ddd; 
+                    border-radius: 6px; font-size: 14px; font-family: monospace; resize: vertical; }
+        textarea:focus { outline: none; border-color: #6d4aff; }
+        .btn-submit { background: #22c55e; color: white; padding: 12px 30px; border: none; 
+                       border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: bold; margin-top: 15px; }
+        .btn-submit:hover { background: #16a34a; }
+        .back { color: #6d4aff; text-decoration: none; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a class="back" href="task-t-1002.html">← Retour au détail de la tâche</a>
+        <h1>Soumission - T-1002</h1>
+        <div class="meta">Traduction technique FR→EN</div>
+        
+        <div class="instruction">
+            <strong>Consigne :</strong> Traduisez ce texte technique en anglais.
+        </div>
+        
+        <form id="solution-form">
+            <textarea id="solution-t-1002" class="task-input" 
+                      placeholder="Écrivez votre réponse ici..."></textarea>
+            <br>
+            <button type="submit" class="btn-submit submit-action">📨 Envoyer la réponse</button>
+        </form>
+        
+        <script>
+            document.getElementById('solution-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const answer = document.getElementById('solution-t-1002').value;
+                if (answer.trim()) {
+                    alert('✅ Réponse soumise avec succès !');
+                } else {
+                    alert('⚠️ Veuillez entrer une réponse avant de soumettre.');
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>
